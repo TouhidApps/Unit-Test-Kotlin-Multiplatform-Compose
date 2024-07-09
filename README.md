@@ -1,7 +1,9 @@
-# Unit-Test-Kotlin-Multiplatform-Compose
-Unit Test - Kotlin Multiplatform Compose
+# Unit Test Kotlin Multiplatform Compose
+Exmaple of Unit Test - Kotlin Multiplatform Compose
 
-## Unit test setup guide
+UI Unit test and Kotlin unit test
+
+## Unit test setup guide for Kotlin Multiplatform Compose
 ![Kotlin Multiplatform Compose Unit test](https://raw.githubusercontent.com/TouhidApps/Unit-Test-Kotlin-Multiplatform-Compose/main/img/setup1.png)
 ![Kotlin Multiplatform Compose Unit test](https://raw.githubusercontent.com/TouhidApps/Unit-Test-Kotlin-Multiplatform-Compose/main/img/setup2.png)
 ![Kotlin Multiplatform Compose Unit test](https://raw.githubusercontent.com/TouhidApps/Unit-Test-Kotlin-Multiplatform-Compose/main/img/setup3.png)
