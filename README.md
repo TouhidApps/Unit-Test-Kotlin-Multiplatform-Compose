@@ -10,7 +10,7 @@ UI Unit test and Kotlin unit test
 ![Kotlin Multiplatform Compose Unit test](https://raw.githubusercontent.com/TouhidApps/Unit-Test-Kotlin-Multiplatform-Compose/main/img/setup4.png)
 ![Kotlin Multiplatform Compose Unit test](https://raw.githubusercontent.com/TouhidApps/Unit-Test-Kotlin-Multiplatform-Compose/main/img/setup5.png)
 
-## To set test coverage:
+## To set and see test coverage:
 
 Add below plugin:
 
@@ -34,6 +34,24 @@ kover {
                 minBound(10)
             }
         }
+        filters {  // To get clean report we should filter unwanted packages/classes
+            excludes {
+                // Entry points
+                classes("MainKt") // Desktop
+                classes("*.MainActivity") // Android
+
+                // Generated classes and resources
+                packages("*.generated.*")
+                packages("*.di*") // Dependency injection package
+
+                // Compose related(If you don't do UI testing)
+                classes("*ComposableSingletons*")
+                annotatedBy("androidx.compose.runtime.Composable")
+                annotatedBy("androidx.compose.ui.tooling.preview.Preview")
+
+                classes("CounterKtTest") // For this project this is for UI testing
+            }
+        }
     }
 }
 ```
@@ -51,3 +69,5 @@ If failed it will show an html link in terminal about code coverage info.
 ## AAA Pattern: Arrange, Act, Assert
 
 Class: CalculatorTest
+
+![Kotlin Multiplatform Compose kover](https://raw.githubusercontent.com/TouhidApps/Unit-Test-Kotlin-Multiplatform-Compose/main/img/setup6.png)

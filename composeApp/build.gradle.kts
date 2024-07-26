@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
 
-    // mark
+    // Mark
     id("org.jetbrains.kotlinx.kover") version "0.8.3" // To set test coverage rule
 }
 
