@@ -69,6 +69,7 @@ If failed it will show an html link in terminal about code coverage info.
 ## AAA Pattern: Arrange, Act, Assert
 
 Test Class: CalculatorTest
+
 Function Class: MyCalculator
 
 ![Kotlin Multiplatform Compose kover](https://raw.githubusercontent.com/TouhidApps/Unit-Test-Kotlin-Multiplatform-Compose/main/img/setup6.png)
