@@ -8,6 +8,42 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+
+    // mark
+    id("org.jetbrains.kotlinx.kover") version "0.8.3" // To set test coverage rule
+}
+
+// Mark - test coverage
+kover {
+    reports {
+        verify {
+            rule {
+                /**
+                 * If 10% code is executed in test it should pass, otherwise failed
+                 * You can set it 80 if you can write that much unit test code
+                 */
+                minBound(10)
+            }
+        }
+        filters {  // To get clean report we should filter unwanted packages/classes
+            excludes {
+                // Entry points
+                classes("MainKt") // Desktop
+                classes("*.MainActivity") // Android
+
+                // Generated classes and resources
+                packages("*.generated.*")
+                packages("*.di*") // Dependency injection package
+
+                // Compose related(If you don't do UI testing)
+                classes("*ComposableSingletons*")
+                annotatedBy("androidx.compose.runtime.Composable")
+                annotatedBy("androidx.compose.ui.tooling.preview.Preview")
+
+                classes("CounterKtTest") // For this project this is for UI testing
+            }
+        }
+    }
 }
 
 kotlin {
@@ -81,6 +117,10 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+
+    // Mark
+    // add this, NOTE: it's "isIncludeAndroidResources" not "includeAndroidResources"
+    testOptions.unitTests.isIncludeAndroidResources = true
 
     defaultConfig {
         applicationId = "com.touhidapps.unittestcompose"
